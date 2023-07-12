@@ -35,6 +35,10 @@ class UserRepositoryInMemory implements UserRepository {
 
     if (currentUserIndex >= 0) this.users.splice(currentUserIndex, 1)
   }
+
+  async findManyUser(): Promise<User[]> {
+    return this.users
+  }
 }
 
 export { UserRepositoryInMemory }

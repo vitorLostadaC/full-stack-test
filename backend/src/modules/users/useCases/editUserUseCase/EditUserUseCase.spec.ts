@@ -1,7 +1,5 @@
-import { User } from "../../entities/User"
 import { UserRepositoryInMemory } from "../../repositories/UserRepositoryInMemory"
 import { EditUserUseCase } from "./EditUserUseCase"
-import { UserWithSameEmailException } from "../../exceptions/UserWithSameEmailException"
 import { makeUserFactory } from "../../factory/UserFactory"
 
 let editUserUseCase: EditUserUseCase
