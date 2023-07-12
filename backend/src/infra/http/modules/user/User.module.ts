@@ -4,8 +4,10 @@ import { DeleteUserUseCase } from "src/modules/users/useCases/deleteUserUseCase/
 import { EditUserUseCase } from "src/modules/users/useCases/editUserUseCase/EditUserUseCase"
 import { FindManyUserUseCase } from "src/modules/users/useCases/findManyUseCase/findManyUserUseCase"
 import { UserController } from "./User.controller"
+import { DatabaseModule } from "src/infra/databse/Database.module"
 
 @Module({
+  imports: [DatabaseModule],
   providers: [
     CreateUserUseCase,
     DeleteUserUseCase,
