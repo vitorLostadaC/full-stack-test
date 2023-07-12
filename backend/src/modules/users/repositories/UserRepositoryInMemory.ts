@@ -29,6 +29,12 @@ class UserRepositoryInMemory implements UserRepository {
 
     if (currentNoteIndex >= 0) this.users[currentNoteIndex] = user
   }
+
+  async delete(userId: string): Promise<void> {
+    const currentUserIndex = this.users.findIndex((user) => user.id === userId)
+
+    if (currentUserIndex >= 0) this.users.splice(currentUserIndex, 1)
+  }
 }
 
 export { UserRepositoryInMemory }

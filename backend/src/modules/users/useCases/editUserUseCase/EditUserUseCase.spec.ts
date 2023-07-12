@@ -7,7 +7,7 @@ import { makeUserFactory } from "../../factory/UserFactory"
 let editUserUseCase: EditUserUseCase
 let userRepositoryInMemory: UserRepositoryInMemory
 
-describe("Create User", () => {
+describe("Edit User", () => {
   beforeEach(() => {
     userRepositoryInMemory = new UserRepositoryInMemory()
     editUserUseCase = new EditUserUseCase(userRepositoryInMemory)
