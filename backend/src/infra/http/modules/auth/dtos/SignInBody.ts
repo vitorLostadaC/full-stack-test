@@ -1,11 +1,13 @@
-import { IsNotEmpty, IsEmail, MinLength } from "class-validator"
+import { IsEmailCustom } from "src/infra/classValidator/decorators/IsEmailCustom"
+import { IsNotEmptyCustom } from "src/infra/classValidator/decorators/IsNotEmptyCustom"
+import { MinLengthCustom } from "src/infra/classValidator/decorators/MinLengthCustom"
 
 export class SignInBody {
-  @IsNotEmpty()
-  @IsEmail()
+  @IsNotEmptyCustom()
+  @IsEmailCustom()
   email: string
 
-  @IsNotEmpty()
-  @MinLength(6)
+  @IsNotEmptyCustom()
+  @MinLengthCustom(6)
   password: string
 }

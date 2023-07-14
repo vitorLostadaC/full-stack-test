@@ -1,6 +1,6 @@
-import { IsNotEmpty } from "class-validator"
+import { IsNotEmptyCustom } from "src/infra/classValidator/decorators/IsNotEmptyCustom"
 
 export class EditUserBody {
-  @IsNotEmpty()
+  @IsNotEmptyCustom()
   name: string
 }
