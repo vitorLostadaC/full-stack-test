@@ -2,7 +2,9 @@ import axios, { AxiosInstance } from "axios"
 import { GetBeersUseCaseRequest } from "src/modules/beers/useCases/getBeers/GetBeersUseCase"
 import { BeersRepository } from "src/modules/beers/repositories/BeersRepository"
 import { Beer } from "../schemas/Beer"
+import { Injectable } from "@nestjs/common"
 
+@Injectable()
 export class PunkBeersApiRepository implements BeersRepository {
   private readonly api: AxiosInstance
 
@@ -12,11 +14,11 @@ export class PunkBeersApiRepository implements BeersRepository {
     })
   }
 
-  async findManyBeers({ page, perPage }: GetBeersUseCaseRequest) {
+  async findManyBeers({ page, per_page }: GetBeersUseCaseRequest) {
     const beers = await this.api.get<Beer>("", {
       params: {
         page,
-        perPage
+        per_page
       }
     })
 

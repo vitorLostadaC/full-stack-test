@@ -1,17 +1,19 @@
+import { Injectable } from "@nestjs/common"
 import { BeersRepository } from "../../repositories/BeersRepository"
 
 export interface GetBeersUseCaseRequest {
-  perPage?: number
+  per_page?: number
   page?: number
 }
 
+@Injectable()
 export class GetBeersUseCase {
   constructor(private beersRepository: BeersRepository) {}
 
-  async execute({ page, perPage }: GetBeersUseCaseRequest) {
+  async execute({ page, per_page }: GetBeersUseCaseRequest) {
     const beers = await this.beersRepository.findManyBeers({
       page,
-      perPage
+      per_page
     })
 
     return beers

@@ -5,7 +5,7 @@ import { JwtStrategy } from "src/modules/auth/strategies/Jwt.strategy"
 import { LocalStrategy } from "src/modules/auth/strategies/Local.strategy"
 import { SignInUseCase } from "src/modules/auth/useCases/signIn/SignInUseCase"
 import { ValidateUserUseCase } from "src/modules/auth/useCases/validateUser/ValidateUserUseCase"
-import { AuthController } from "./auth.controller"
+import { AuthController } from "./Auth.controller"
 import { LoginValidationMiddleware } from "./middlewares/SignInValidate.middleware"
 
 @Module({
