@@ -1,6 +1,6 @@
 import { Beer } from "src/infra/integrations/punkApi/schemas/Beer"
-import { GetBeersUseCaseRequest } from "../useCases/getBeers/GetBeersUseCase"
+import { findManyBeersRequest } from "../useCases/findManyBeersUseCase/findManyBeersUseCase"
 
 export abstract class BeersRepository {
-  abstract findManyBeers(request: GetBeersUseCaseRequest): Promise<Beer>
+  abstract findManyBeers(request: findManyBeersRequest): Promise<Beer>
 }

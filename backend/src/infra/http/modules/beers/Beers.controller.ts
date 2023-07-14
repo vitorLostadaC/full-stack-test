@@ -1,11 +1,11 @@
 import { Controller, Get, Query, UseGuards } from "@nestjs/common"
 import { JwtAuthGuard } from "../auth/guards/JwtAuth.guard"
-import { GetBeersUseCase } from "../../../../modules/beers/useCases/getBeers/GetBeersUseCase"
+import { findManyBeersUseCase } from "../../../../modules/beers/useCases/findManyBeersUseCase/findManyBeersUseCase"
 
 @UseGuards(JwtAuthGuard)
 @Controller("/beers")
 export class BeersController {
-  constructor(private getBeersUseCase: GetBeersUseCase) {}
+  constructor(private getBeersUseCase: findManyBeersUseCase) {}
 
   @Get()
   async findMany(

@@ -1,11 +1,11 @@
 import { Module } from "@nestjs/common"
 import { BeersController } from "./Beers.controller"
 import { IntegrationsModule } from "src/infra/integrations/Integrations.module"
-import { GetBeersUseCase } from "src/modules/beers/useCases/getBeers/GetBeersUseCase"
+import { findManyBeersUseCase } from "src/modules/beers/useCases/findManyBeersUseCase/findManyBeersUseCase"
 
 @Module({
   imports: [IntegrationsModule],
   controllers: [BeersController],
-  providers: [GetBeersUseCase]
+  providers: [findManyBeersUseCase]
 })
 export class BeersModule {}
