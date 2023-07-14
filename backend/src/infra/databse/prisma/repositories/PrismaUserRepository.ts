@@ -4,7 +4,7 @@ import { UserRepository } from "src/modules/users/repositories/UserRepository"
 import { PrismaService } from "../Prisma.service"
 import { PrismaUserMapper } from "../mappers/PrismaUserMapper"
 
-Injectable()
+@Injectable()
 export class PrismaUserRepository implements UserRepository {
   constructor(private prisma: PrismaService) {}
 
