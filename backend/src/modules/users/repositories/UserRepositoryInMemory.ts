@@ -16,7 +16,7 @@ class UserRepositoryInMemory implements UserRepository {
     return currentUser
   }
 
-  async findById(id: string): Promise<User> {
+  async findById(id: string): Promise<User | null> {
     const currentUser = this.users.find((user) => user.id === id)
 
     if (!currentUser) return null

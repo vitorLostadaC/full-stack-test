@@ -5,6 +5,7 @@ import { EditUserUseCase } from "src/modules/users/useCases/editUserUseCase/Edit
 import { FindManyUserUseCase } from "../../../../modules/users/useCases/findManyUseCase/FindManyUserUseCase"
 import { CreateUserBody } from "./dtos/CreateUserBody"
 import { EditUserBody } from "./dtos/EditUserBody"
+import { UserViewModel } from "./viewModel/UserViewModel"
 
 @Controller("user")
 export class UserController {
@@ -25,14 +26,14 @@ export class UserController {
       password
     })
 
-    return user
+    return UserViewModel.toHTTP(user)
   }
 
   @Get()
   async findManyUser() {
     const users = await this.findManyUserUseCase.execute()
 
-    return users
+    return users.map(UserViewModel.toHTTP)
   }
 
   @Delete(":userId")

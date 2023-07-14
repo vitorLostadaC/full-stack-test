@@ -15,7 +15,7 @@ export class PrismaUserRepository implements UserRepository {
       data: rawUser
     })
   }
-  async findByEmail(email: string): Promise<User> {
+  async findByEmail(email: string): Promise<User | null> {
     const currentUser = await this.prisma.user.findUnique({
       where: {
         email
@@ -26,7 +26,7 @@ export class PrismaUserRepository implements UserRepository {
 
     return PrismaUserMapper.toDomain(currentUser)
   }
-  async findById(userId: string): Promise<User> {
+  async findById(userId: string): Promise<User | null> {
     const currentUser = await this.prisma.user.findUnique({
       where: {
         id: userId
