@@ -7,7 +7,7 @@ import { CreateUserBody } from "./dtos/CreateUserBody"
 import { EditUserBody } from "./dtos/EditUserBody"
 import { UserViewModel } from "./viewModel/UserViewModel"
 
-@Controller("user")
+@Controller("users")
 export class UserController {
   constructor(
     private createUserUseCase: CreateUserUseCase,

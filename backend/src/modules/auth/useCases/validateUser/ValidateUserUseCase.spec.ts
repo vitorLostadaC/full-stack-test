@@ -2,7 +2,7 @@ import { ValidateUserUseCase } from "./ValidateUserUseCase"
 import { UserRepositoryInMemory } from "../../../users/repositories/UserRepositoryInMemory"
 import { User } from "../../../users/entities/User"
 import { CreateUserUseCase } from "src/modules/users/useCases/createUserUseCase/CreateUserUseCase"
-import { AuthValuesIncorrectException } from "src/infra/http/modules/auth/exceptions/AuthValuesIncorrectException"
+import { AuthValuesIncorrectException } from "src/modules/auth/exceptions/AuthValuesIncorrectException"
 
 let validateUserUseCase: ValidateUserUseCase
 let createUserUseCase: CreateUserUseCase
