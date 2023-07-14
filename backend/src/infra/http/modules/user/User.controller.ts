@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common"
 import { CreateUserUseCase } from "src/modules/users/useCases/createUserUseCase/CreateUserUseCase"
 import { DeleteUserUseCase } from "src/modules/users/useCases/deleteUserUseCase/DeleteUserUseCase"
 import { EditUserUseCase } from "src/modules/users/useCases/editUserUseCase/EditUserUseCase"
-import { FindManyUserUseCase } from "../../../../modules/users/useCases/findManyUseCase/findManyUserUseCase"
+import { FindManyUserUseCase } from "../../../../modules/users/useCases/findManyUseCase/FindManyUserUseCase"
 import { CreateUserBody } from "./dtos/CreateUserBody"
 import { EditUserBody } from "./dtos/EditUserBody"
 
@@ -19,7 +19,7 @@ export class UserController {
   async createUser(@Body() body: CreateUserBody) {
     const { email, name, password } = body
 
-    const user = this.createUserUseCase.execute({
+    const user = await this.createUserUseCase.execute({
       email,
       name,
       password
@@ -30,7 +30,7 @@ export class UserController {
 
   @Get()
   async findManyUser() {
-    const users = this.findManyUserUseCase.execute()
+    const users = await this.findManyUserUseCase.execute()
 
     return users
   }
