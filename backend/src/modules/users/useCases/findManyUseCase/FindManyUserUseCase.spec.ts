@@ -1,6 +1,6 @@
 import { UserRepositoryInMemory } from "../../repositories/UserRepositoryInMemory"
 import { makeUserFactory } from "../../factory/UserFactory"
-import { FindManyUserUseCase } from "./findManyUserUseCase"
+import { FindManyUserUseCase } from "./FindManyUserUseCase"
 
 let findManyUserUseCase: FindManyUserUseCase
 let userRepositoryInMemory: UserRepositoryInMemory
