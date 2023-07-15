@@ -1,13 +1,15 @@
-import * as React from "react"
 import Button from "@mui/material/Button"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
-import { TextField } from "../../components/TextField/TextField"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { LoginInputsSchema } from "./LoginPage.schema"
 import Grid from "@mui/material/Grid"
 import { Container, Stack } from "@mui/material"
 import { formFeedback } from "../../data/formFeedback"
+import { useMutation } from "react-query"
+import { signIn } from "../../services/Auth/AuthService"
+import { SignInParamsSchema } from "../../services/Auth/AuthService.schema"
+import { TextField } from "../../components/TextField/TextField"
 
 export default function Login() {
   const methods = useForm<LoginInputsSchema>({
@@ -23,8 +25,14 @@ export default function Login() {
     formState: { errors }
   } = methods
 
+  const signInMutate = useMutation({
+    mutationFn: (params: SignInParamsSchema) => signIn(params),
+    onSuccess: (data) => console.log(data),
+    onError: (error) => console.log(error)
+  })
+
   const onSubmit: SubmitHandler<LoginInputsSchema> = (data) => {
-    console.log(data)
+    signInMutate.mutate(data)
   }
 
   return (
@@ -73,6 +81,7 @@ export default function Login() {
                 render={({ field }) => (
                   <TextField
                     {...field}
+                    password
                     fullWidth
                     label="Senha"
                     autoComplete="current-password"
