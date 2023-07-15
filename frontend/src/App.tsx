@@ -1,9 +1,9 @@
-import { LoginPage } from "./pages/Login/LoginPage"
+import { AppRouterProvider } from "./routes/AppRouteProvider"
 
 function App() {
   return (
     <main>
-      <LoginPage />
+      <AppRouterProvider />
     </main>
   )
 }
