@@ -1,56 +1,56 @@
 export interface Beer {
-  id: 321
+  id: number
   name: string
   tagline: string
   first_brewed: string
   description: string
   image_url: null
-  abv: 4.7
-  ibu: 35
-  target_fg: 1008
-  target_og: 1043
-  ebc: 13
-  srm: 7
-  ph: 4.6
-  attenuation_level: 81
+  abv: number
+  ibu: number
+  target_fg: number
+  target_og: number
+  ebc: number
+  srm: number
+  ph: number
+  attenuation_level: number
   volume: {
-    value: 20
+    value: number
     unit: string
   }
   boil_volume: {
-    value: 25
+    value: number
     unit: string
   }
   method: {
     mash_temp: [
       {
         temp: {
-          value: 63
+          value: number
           unit: string
         }
-        duration: 35
+        duration: number
       }
     ]
     fermentation: {
       temp: {
-        value: 21
+        value: number
         unit: string
       }
     }
-    twist: null
+    twist: string
   }
   ingredients: {
     malt: {
       name: string
       amount: {
-        value: 3.12
+        value: number
         unit: string
       }
     }[]
     hops: {
       name: string
       amount: {
-        value: 6
+        value: number
         unit: string
       }
       add: string
