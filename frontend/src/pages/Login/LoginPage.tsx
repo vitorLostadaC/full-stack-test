@@ -4,12 +4,12 @@ import Typography from "@mui/material/Typography"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { LoginInputsSchema } from "./LoginPage.schema"
 import Grid from "@mui/material/Grid"
-import { Container, Stack } from "@mui/material"
+import { Container, Stack, TextField } from "@mui/material"
 import { formFeedback } from "../../data/formFeedback"
 import { useMutation } from "react-query"
 import { signIn } from "../../services/Auth/AuthService"
 import { SignInParamsSchema } from "../../services/Auth/AuthService.schema"
-import { TextField } from "../../components/TextField/TextField"
+import { TextFieldPassword } from "../../components/TextFieldPassword/TextFieldPassword"
 
 export default function Login() {
   const methods = useForm<LoginInputsSchema>({
@@ -79,9 +79,8 @@ export default function Login() {
                 }}
                 name="password"
                 render={({ field }) => (
-                  <TextField
+                  <TextFieldPassword
                     {...field}
-                    password
                     fullWidth
                     label="Senha"
                     autoComplete="current-password"
