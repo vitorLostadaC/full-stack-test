@@ -7,4 +7,4 @@ import {
 export const GET_BEERS = "getBeers"
 export const getBeers = (
   params: GetBeersParamsSchema
-): Promise<GetBeersResponseSchema> => api.post("/beers", { params })
+): Promise<GetBeersResponseSchema> => api.get("/beers", { params })
