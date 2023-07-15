@@ -2,14 +2,22 @@ import { Container, Stack, Typography } from "@mui/material"
 import { useQuery } from "react-query"
 import { GET_BEERS, getBeers } from "../../services/BeerService/BeerServices"
 import { SimpleTable } from "../../components/SimpleTable/SimpleTable"
+import { Pagination } from "../../components/Pagination/Pagination"
+import { useState } from "react"
+import { GetBeersParamsSchema } from "../../services/BeerService/BeerService.schema"
 
 export const HomePage = () => {
+  const [params, setParams] = useState<GetBeersParamsSchema>({
+    page: 1,
+    per_page: 20
+  })
+
   const getBeersQuery = useQuery({
-    queryKey: [GET_BEERS],
+    queryKey: [GET_BEERS, params],
     queryFn: () =>
       getBeers({
-        page: 1,
-        per_page: 20
+        page: params.page,
+        per_page: params.per_page
       })
   })
 
@@ -17,10 +25,17 @@ export const HomePage = () => {
     <Container
       component="main"
       sx={{
-        m: "2rem auto"
+        p: "2rem 0",
+        height: "100vh"
       }}
     >
-      <Stack sx={{ justifyContent: "space-between", flexGrow: 1 }}>
+      <Stack
+        sx={{
+          justifyContent: "space-between",
+          gap: 2,
+          height: "100%"
+        }}
+      >
         <SimpleTable
           columns={[
             {
@@ -53,7 +68,12 @@ export const HomePage = () => {
           footer="Cervejas"
           stickyFooter
         />
-        <Typography>teste</Typography>
+        <Pagination
+          currentPage={params.page}
+          onPageChange={(page) => setParams({ ...params, page })}
+          quantityItemsPerPage={params.per_page}
+          totalItems={325}
+        />
       </Stack>
     </Container>
   )
