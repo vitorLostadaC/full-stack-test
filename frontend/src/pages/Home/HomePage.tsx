@@ -14,27 +14,43 @@ export const HomePage = () => {
   })
 
   return (
-    <Container component="main">
+    <Container
+      component="main"
+      sx={{
+        m: "2rem auto",
+        height: "100vh"
+      }}
+    >
       <SimpleTable
         columns={[
           {
             dataCellType: "name",
-            headerCell: "Nome"
+            headerCell: "Nome",
+            width: "20%"
           },
           {
             dataCellType: "tagline",
-            headerCell: "Tag"
+            headerCell: "Tag",
+            width: "20%"
           },
           {
             dataCellType: "first_brewed",
-            headerCell: "Primeira fabricação"
+            headerCell: "Primeira fabricação",
+            width: "20%"
           },
           {
             dataCellType: "attenuation_level",
-            headerCell: "Nível de atenuação"
+            headerCell: "Nível de atenuação",
+            width: "20%"
+          },
+          {
+            dataCellType: "abv",
+            headerCell: "Nível de atenuação",
+            width: "20%"
           }
         ]}
         rows={getBeersQuery.data || []}
+        caption="Cervejas"
       />
     </Container>
   )

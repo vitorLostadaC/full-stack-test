@@ -19,6 +19,51 @@ export const theme = createTheme(
             }
            
             `
+      },
+      MuiTableCell: {
+        styleOverrides: {
+          root: ({ theme }) => ({
+            borderBottom: "0px",
+            paddingBottom: "0px",
+            paddingTop: "0px",
+            height: "44px",
+            "&:first-of-type": {
+              paddingLeft: "30px"
+            },
+            "&:last-of-type": {
+              paddingRight: "30px"
+            }
+          })
+        }
+      },
+      MuiTableHead: {
+        styleOverrides: {
+          root: ({ theme }) => ({
+            ".MuiTableCell-head": {
+              backgroundColor: "#E6EAEE",
+              fontWeight: 600
+            }
+          })
+        }
+      },
+      MuiTableRow: {
+        styleOverrides: {
+          root: ({ theme }) => ({
+            "&:nth-of-type(odd)": {
+              backgroundColor: theme.palette.common.white
+            },
+            "&:nth-of-type(even)": {
+              backgroundColor: "#f1f1f1"
+            },
+            ":hover": {
+              background: "#fffafa"
+            }
+            // hide last border
+            /* "&:last-child td, &:last-child th": {
+                border: 0,
+            }, */
+          })
+        }
       }
     }
   },
