@@ -10,8 +10,12 @@ import { useMutation } from "react-query"
 import { signIn } from "../../services/Auth/AuthService"
 import { SignInParamsSchema } from "../../services/Auth/AuthService.schema"
 import { TextFieldPassword } from "../../components/TextFieldPassword/TextFieldPassword"
+import { ExceptionApiResponseSchema } from "../../lib/api.schema"
+import { useAuthContext } from "../../contexts/AuthContext/AuthContext"
 
 export default function Login() {
+  const { saveAuthenticatedUser } = useAuthContext()
+
   const methods = useForm<LoginInputsSchema>({
     defaultValues: {
       email: "",
@@ -27,8 +31,9 @@ export default function Login() {
 
   const signInMutate = useMutation({
     mutationFn: (params: SignInParamsSchema) => signIn(params),
-    onSuccess: (data) => console.log(data),
-    onError: (error) => console.log(error)
+    onSuccess: ({ access_token, ...user }) => {
+      saveAuthenticatedUser({ access_token, user })
+    }
   })
 
   const onSubmit: SubmitHandler<LoginInputsSchema> = (data) => {

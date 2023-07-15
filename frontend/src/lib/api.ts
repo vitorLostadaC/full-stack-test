@@ -28,6 +28,6 @@ api.interceptors.response.use(
   (exception: AxiosError) => {
     if (exception.response?.status === 401) removeAuthenticatedWebStorage()
 
-    return exception.response?.data
+    return Promise.reject(exception.response?.data)
   }
 )
