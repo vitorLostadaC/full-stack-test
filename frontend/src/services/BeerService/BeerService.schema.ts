@@ -1,7 +1,7 @@
 import { Beer } from "../../schemas/Beer.schema"
 
 export interface GetBeersParamsSchema {
-  perPage: number
+  per_page: number
   page: number
 }
 

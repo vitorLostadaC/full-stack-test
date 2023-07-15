@@ -46,6 +46,7 @@ export const theme = createTheme(
           })
         }
       },
+
       MuiTableRow: {
         styleOverrides: {
           root: ({ theme }) => ({
@@ -56,7 +57,7 @@ export const theme = createTheme(
               backgroundColor: "#f1f1f1"
             },
             ":hover": {
-              background: "#fffafa"
+              background: "#f1f0ff"
             }
             // hide last border
             /* "&:last-child td, &:last-child th": {
