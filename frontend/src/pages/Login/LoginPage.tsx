@@ -14,7 +14,7 @@ import { ExceptionApiResponseSchema } from "../../lib/api.schema"
 import { useAuthContext } from "../../contexts/AuthContext/AuthContext"
 import { toast } from "react-toastify"
 
-export default function Login() {
+export const LoginPage = () => {
   const { saveAuthenticatedUser } = useAuthContext()
 
   const methods = useForm<LoginInputsSchema>({
