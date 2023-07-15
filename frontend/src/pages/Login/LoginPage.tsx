@@ -12,6 +12,7 @@ import { SignInParamsSchema } from "../../services/Auth/AuthService.schema"
 import { TextFieldPassword } from "../../components/TextFieldPassword/TextFieldPassword"
 import { ExceptionApiResponseSchema } from "../../lib/api.schema"
 import { useAuthContext } from "../../contexts/AuthContext/AuthContext"
+import { toast } from "react-toastify"
 
 export default function Login() {
   const { saveAuthenticatedUser } = useAuthContext()
@@ -25,6 +26,7 @@ export default function Login() {
 
   const {
     control,
+    setError,
     handleSubmit,
     formState: { errors }
   } = methods
@@ -33,6 +35,18 @@ export default function Login() {
     mutationFn: (params: SignInParamsSchema) => signIn(params),
     onSuccess: ({ access_token, ...user }) => {
       saveAuthenticatedUser({ access_token, user })
+    },
+    onError: (error: ExceptionApiResponseSchema) => {
+      toast.error(error.message)
+      if (!error.fields) return
+
+      const fieldErrors = Object.keys(
+        error.fields
+      ) as (keyof LoginInputsSchema)[]
+
+      fieldErrors.forEach((key) =>
+        setError(key, { message: error?.fields?.[key] })
+      )
     }
   })
 
