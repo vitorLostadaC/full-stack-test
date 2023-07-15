@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import axios, { AxiosError, AxiosResponse } from "axios"
+import { removeAuthenticatedWebStorage } from "../contexts/AuthContext/AuthContext"
 
 export const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL as string
@@ -25,6 +26,8 @@ api.interceptors.response.use(
     return response.data
   },
   (exception: AxiosError) => {
+    if (exception.response?.status === 401) removeAuthenticatedWebStorage()
+
     return exception.response?.data
   }
 )
