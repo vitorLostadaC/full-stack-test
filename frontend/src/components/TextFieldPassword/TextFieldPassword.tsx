@@ -7,6 +7,9 @@ import {
 } from "./TextFieldPassword.schema"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 
+/**
+ * TextField with switch button to visible/hidden password
+ */
 export const TextFieldPassword = forwardRef<
   HTMLDivElement,
   TextFieldPropsSchema
