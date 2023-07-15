@@ -2,20 +2,36 @@ import * as React from "react"
 import Button from "@mui/material/Button"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
-import Container from "@mui/material/Container"
 import { TextField } from "../../components/TextField/TextField"
+import { Controller, SubmitHandler, useForm } from "react-hook-form"
+import { LoginInputsSchema } from "./LoginPage.schema"
+import Grid from "@mui/material/Grid"
+import { Container, Stack } from "@mui/material"
+import { formFeedback } from "../../data/formFeedback"
 
 export default function Login() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
+  const methods = useForm<LoginInputsSchema>({
+    defaultValues: {
+      email: "",
+      password: ""
+    }
+  })
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors }
+  } = methods
+
+  const onSubmit: SubmitHandler<LoginInputsSchema> = (data) => {
+    console.log(data)
   }
 
   return (
     <Container component="main" maxWidth="xs">
-      <Box
+      <Stack
         sx={{
-          marginTop: 8,
-          display: "flex",
+          mt: 8,
           flexDirection: "column",
           alignItems: "center"
         }}
@@ -23,38 +39,56 @@ export default function Login() {
         <Typography component="h1" variant="h5">
           Entrar
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="E-mail"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Senha"
-            id="password"
-            autoComplete="current-password"
-            password
-          />
+        <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }}>
+          <Grid container gap={2}>
+            <Grid item xs={12}>
+              <Controller
+                control={control}
+                rules={{
+                  required: formFeedback.general.required
+                }}
+                name="email"
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    fullWidth
+                    label="E-mail"
+                    autoComplete="email"
+                    autoFocus
+                    error={!!errors.email}
+                    helperText={errors.email?.message}
+                  />
+                )}
+              />
+            </Grid>
 
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
+            <Grid item xs={12}>
+              <Controller
+                control={control}
+                rules={{
+                  required: formFeedback.general.required,
+                  minLength: formFeedback.general.minLenght(6)
+                }}
+                name="password"
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    fullWidth
+                    label="Senha"
+                    autoComplete="current-password"
+                    error={!!errors.password}
+                    helperText={errors.password?.message}
+                  />
+                )}
+              />
+            </Grid>
+          </Grid>
+
+          <Button type="submit" fullWidth variant="contained" sx={{ mt: 3 }}>
             Entrar
           </Button>
         </Box>
-      </Box>
+      </Stack>
     </Container>
   )
 }
