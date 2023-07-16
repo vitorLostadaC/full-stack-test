@@ -9,6 +9,7 @@ import { AuthContextProvider } from "./contexts/AuthContext/AuthContext.tsx"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { QueryClientProvider } from "@tanstack/react-query"
+import { Loader } from "./components/Loader/Loader.tsx"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -28,6 +29,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             pauseOnHover
             theme="light"
           />
+          <Loader />
         </AuthContextProvider>
         <CssBaseline />
       </ThemeProvider>
