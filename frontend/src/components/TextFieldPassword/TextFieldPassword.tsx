@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { TextField as MuiTextField, Tooltip } from "@mui/material"
 import { forwardRef, useState } from "react"
 import {

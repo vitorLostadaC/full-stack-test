@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /**
  * return interval between pages
  * @example generatePagesArray(2, 6) = [3, 4, 5, 6]

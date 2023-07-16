@@ -3,12 +3,7 @@
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
-  extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:react-hooks/recommended"
-  ],
+  extends: ["react-app", "react-app/jest", "plugin:react-hooks/recommended"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",
@@ -16,13 +11,8 @@ module.exports = {
     project: true,
     tsconfigRootDir: __dirname
   },
-  plugins: ["react-refresh"],
+  plugins: ["react", "@typescript-eslint"],
   rules: {
-    "react-refresh/only-export-components": [
-      "warn",
-      { allowConstantExport: true }
-    ],
-    "@typescript-eslint/no-non-null-assertion": "off",
-    "@typescript-eslint/no-misused-promises": "off"
+    "no-unused-expressions": ["off"]
   }
 }

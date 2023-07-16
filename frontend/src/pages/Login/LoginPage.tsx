@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import Button from "@mui/material/Button"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"

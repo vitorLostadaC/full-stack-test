@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import axios, { AxiosError, AxiosResponse } from "axios"
 import { removeAuthenticatedWebStorage } from "../contexts/AuthContext/AuthContext"
 import { WebStorageKeys } from "../data/webStorageKeys"
