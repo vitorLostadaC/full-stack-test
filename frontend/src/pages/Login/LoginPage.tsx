@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import Button from "@mui/material/Button"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
@@ -6,13 +9,13 @@ import { LoginInputsSchema } from "./LoginPage.schema"
 import Grid from "@mui/material/Grid"
 import { Container, Stack, TextField } from "@mui/material"
 import { formFeedback } from "../../data/formFeedback"
-import { useMutation } from "react-query"
 import { signIn } from "../../services/Auth/AuthService"
 import { SignInParamsSchema } from "../../services/Auth/AuthService.schema"
 import { TextFieldPassword } from "../../components/TextFieldPassword/TextFieldPassword"
 import { ExceptionApiResponseSchema } from "../../lib/api.schema"
 import { useAuthContext } from "../../contexts/AuthContext/AuthContext"
 import { toast } from "react-toastify"
+import { useMutation } from "@tanstack/react-query"
 
 export const LoginPage = () => {
   const { saveAuthenticatedUser } = useAuthContext()

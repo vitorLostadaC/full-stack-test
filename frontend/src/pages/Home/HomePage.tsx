@@ -1,10 +1,13 @@
-import { Container, Stack, Typography } from "@mui/material"
-import { useQuery } from "react-query"
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { Container, Stack } from "@mui/material"
 import { GET_BEERS, getBeers } from "../../services/BeerService/BeerServices"
 import { SimpleTable } from "../../components/SimpleTable/SimpleTable"
 import { Pagination } from "../../components/Pagination/Pagination"
 import { useState } from "react"
 import { GetBeersParamsSchema } from "../../services/BeerService/BeerService.schema"
+import { useQuery } from "@tanstack/react-query"
 
 export const HomePage = () => {
   const [params, setParams] = useState<GetBeersParamsSchema>({
